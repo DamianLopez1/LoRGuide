@@ -1,8 +1,8 @@
 {
   "images" : [
     {
+      "filename" : "Demacia - Freiljord Deck.png",
       "idiom" : "universal",
-      "filename" : "Ionia - Freijlord Statistics Dropshadow.png",
       "scale" : "1x"
     },
     {
@@ -15,7 +15,7 @@
     }
   ],
   "info" : {
-    "version" : 1,
-    "author" : "xcode"
+    "author" : "xcode",
+    "version" : 1
   }
 }

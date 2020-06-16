@@ -7,23 +7,54 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item 2-->
-        <scene sceneID="JcA-aI-6Ac">
+        <!--Card Database-->
+        <scene sceneID="GFF-gh-Nnu">
             <objects>
-                <viewController id="4Va-ZK-vya" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="D3m-SL-imJ">
+                <tableViewController id="vCZ-bO-WPd" customClass="CardDataBaseTableViewController" customModule="Stats_Of_Runeterra" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="rth-zP-2Hq">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="ayz-C8-pOX"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="rYy-QF-XKD"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Kk2-81-3T3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CardImageCell" rowHeight="472" id="MDx-qA-GMZ" customClass="CardImageTableViewCell" customModule="Stats_Of_Runeterra" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="472"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MDx-qA-GMZ" id="0rp-2d-opK">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="472"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="B6b-UN-Qxz">
+                                            <rect key="frame" x="20" y="21" width="374" height="450"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="374" id="PmU-Sl-clL"/>
+                                                <constraint firstAttribute="height" constant="439" id="nJT-kU-Lc4"/>
+                                            </constraints>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="B6b-UN-Qxz" firstAttribute="trailing" secondItem="0rp-2d-opK" secondAttribute="trailingMargin" id="AVq-hB-ynT"/>
+                                        <constraint firstItem="B6b-UN-Qxz" firstAttribute="leading" secondItem="0rp-2d-opK" secondAttribute="leadingMargin" id="dB6-5H-WRa"/>
+                                        <constraint firstItem="B6b-UN-Qxz" firstAttribute="top" secondItem="0rp-2d-opK" secondAttribute="topMargin" constant="10" id="gGS-ZE-OoT"/>
+                                        <constraint firstItem="B6b-UN-Qxz" firstAttribute="bottom" secondItem="0rp-2d-opK" secondAttribute="bottomMargin" constant="10" id="wad-7l-Q95"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="cardImage" destination="B6b-UN-Qxz" id="4uT-fj-k73"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="vCZ-bO-WPd" id="Y5D-Kg-TSw"/>
+                            <outlet property="delegate" destination="vCZ-bO-WPd" id="7AI-Yk-NyC"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Card Database" selectedImage="folder" catalog="system" id="16N-cn-M6g"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="niC-5p-8xX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="461" y="-198"/>
+            <point key="canvasLocation" x="460.86956521739131" y="-194.19642857142856"/>
         </scene>
-        <!--Select up to Two Regions-->
+        <!--Select Two Regions-->
         <scene sceneID="vAy-cA-80B">
             <objects>
                 <viewController id="XD5-sk-Ygk" customClass="SelectRegionsViewController" customModule="Stats_Of_Runeterra" customModuleProvider="target" sceneMemberID="viewController">
@@ -44,7 +75,7 @@
                                 </state>
                                 <connections>
                                     <action selector="findYourDeckButtonPressed:" destination="XD5-sk-Ygk" eventType="touchUpInside" id="ANI-gL-oGa"/>
-                                    <segue destination="hpS-oB-iG4" kind="show" id="Rks-0V-YPX"/>
+                                    <segue destination="hpS-oB-iG4" kind="show" identifier="deckPreview" id="Rks-0V-YPX"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ksi-Fj-t6f">
@@ -52,7 +83,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="icon-demacia"/>
                                 <connections>
-                                    <action selector="demaciaIconTapped:" destination="XD5-sk-Ygk" eventType="touchUpInside" id="qlu-YJ-kJu"/>
+                                    <action selector="tappedOnMultipleRegions:" destination="XD5-sk-Ygk" eventType="touchUpInside" id="jaN-Vy-sMN"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KKa-eN-M0K">
@@ -60,7 +91,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="icon-ionia"/>
                                 <connections>
-                                    <action selector="ioniaIconTapped:" destination="XD5-sk-Ygk" eventType="touchUpInside" id="Ycn-97-Vvu"/>
+                                    <action selector="tappedOnMultipleRegions:" destination="XD5-sk-Ygk" eventType="touchUpInside" id="5x1-MA-kjm"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zK7-Iz-Ks4">
@@ -68,7 +99,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="icon-freljord"/>
                                 <connections>
-                                    <action selector="freljordIconTapped:" destination="XD5-sk-Ygk" eventType="touchUpInside" id="drh-nt-HZX"/>
+                                    <action selector="tappedOnMultipleRegions:" destination="XD5-sk-Ygk" eventType="touchUpInside" id="oZP-Ku-QUV"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zuB-US-hvz">
@@ -76,7 +107,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="icon-noxus"/>
                                 <connections>
-                                    <action selector="noxusIconTapped:" destination="XD5-sk-Ygk" eventType="touchUpInside" id="ekb-ch-J0A"/>
+                                    <action selector="tappedOnMultipleRegions:" destination="XD5-sk-Ygk" eventType="touchUpInside" id="k7O-RA-2r1"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OpQ-Cd-bwW">
@@ -84,7 +115,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="icon-shadowisles"/>
                                 <connections>
-                                    <action selector="shadowIslesIcon:" destination="XD5-sk-Ygk" eventType="touchUpInside" id="Pld-GC-Ntw"/>
+                                    <action selector="tappedOnMultipleRegions:" destination="XD5-sk-Ygk" eventType="touchUpInside" id="MgU-7l-VGM"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vrr-cz-RxW">
@@ -92,7 +123,18 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="icon-piltover"/>
                                 <connections>
-                                    <action selector="piltoverIconTapped:" destination="XD5-sk-Ygk" eventType="touchUpInside" id="z83-FZ-cV1"/>
+                                    <action selector="tappedOnMultipleRegions:" destination="XD5-sk-Ygk" eventType="touchUpInside" id="g7m-Ht-Qrx"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OV1-SX-3Zc">
+                                <rect key="frame" x="54" y="602" width="307" height="65"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="46"/>
+                                <state key="normal" title="Find me a Deck">
+                                    <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="findYourDeckButtonPressed:" destination="XD5-sk-Ygk" eventType="touchUpInside" id="aTY-8i-c2Z"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -100,14 +142,21 @@
                         <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                         <viewLayoutGuide key="safeArea" id="9d4-ny-TrK"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Select up to Two Regions" id="ZS4-Q5-X4p"/>
+                    <navigationItem key="navigationItem" title="Select Two Regions" id="ZS4-Q5-X4p"/>
                     <connections>
                         <outlet property="demaciaIcon" destination="ksi-Fj-t6f" id="rpB-kH-CDR"/>
+                        <outlet property="findADeckButton" destination="OV1-SX-3Zc" id="5tF-pv-6jb"/>
                         <outlet property="freljordIcon" destination="zK7-Iz-Ks4" id="cMP-T0-o8e"/>
                         <outlet property="ioniaIcon" destination="KKa-eN-M0K" id="78r-Mq-BPq"/>
                         <outlet property="noxusIcon" destination="zuB-US-hvz" id="yf2-OK-CtI"/>
                         <outlet property="piltoverIcon" destination="vrr-cz-RxW" id="AuK-th-tH1"/>
                         <outlet property="shadowIslesIcon" destination="OpQ-Cd-bwW" id="dFd-xZ-QW6"/>
+                        <outletCollection property="arrayOfRegions" destination="ksi-Fj-t6f" collectionClass="NSMutableArray" id="q6V-y4-qeO"/>
+                        <outletCollection property="arrayOfRegions" destination="zK7-Iz-Ks4" collectionClass="NSMutableArray" id="lbC-2h-wsG"/>
+                        <outletCollection property="arrayOfRegions" destination="KKa-eN-M0K" collectionClass="NSMutableArray" id="IP9-b7-wSY"/>
+                        <outletCollection property="arrayOfRegions" destination="zuB-US-hvz" collectionClass="NSMutableArray" id="ftg-kW-cE4"/>
+                        <outletCollection property="arrayOfRegions" destination="OpQ-Cd-bwW" collectionClass="NSMutableArray" id="RjG-GD-Vn9"/>
+                        <outletCollection property="arrayOfRegions" destination="vrr-cz-RxW" collectionClass="NSMutableArray" id="FMn-tM-Kxc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TCd-IZ-cW6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -119,7 +168,7 @@
                 <tapGestureRecognizer id="5hn-fi-wbb"/>
                 <tapGestureRecognizer id="dHY-tK-Ie7"/>
             </objects>
-            <point key="canvasLocation" x="1371.0144927536232" y="-880.58035714285711"/>
+            <point key="canvasLocation" x="1230" y="-881"/>
         </scene>
         <!--Deck Preview View Controller-->
         <scene sceneID="j5q-7x-xMo">
@@ -129,47 +178,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="demacia_splash" translatesAutoresizingMaskIntoConstraints="NO" id="0V2-Be-p9U">
-                                <rect key="frame" x="-664" y="-89" width="1853" height="987"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="demacia_splash" translatesAutoresizingMaskIntoConstraints="NO" id="0V2-Be-p9U">
+                                <rect key="frame" x="0.0" y="-89" width="1189" height="987"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Ionia - Freijlord Champions Dropshadow" translatesAutoresizingMaskIntoConstraints="NO" id="1Jn-yq-stJ">
-                                <rect key="frame" x="5" y="10" width="226" height="119"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Piltover - Shadow Isles Deck" translatesAutoresizingMaskIntoConstraints="NO" id="D5k-PJ-EvT">
+                                <rect key="frame" x="-310" y="20" width="1034" height="544"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Ionia - Freijlord Troops Dropshadow" translatesAutoresizingMaskIntoConstraints="NO" id="D5k-PJ-EvT">
-                                <rect key="frame" x="-208" y="129" width="652" height="344"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yXF-I0-GwN">
+                                <rect key="frame" x="125" y="598" width="206" height="104"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Ionia - Feijlord Spells Dropshadow" translatesAutoresizingMaskIntoConstraints="NO" id="Nff-Cj-RQ5">
-                                <rect key="frame" x="-70" y="468" width="380" height="199"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Ionia - Freijlord Statistics Dropshadow" translatesAutoresizingMaskIntoConstraints="NO" id="O00-vQ-y6e">
-                                <rect key="frame" x="130" y="112" width="380" height="379"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Copy Button Dropshadow" translatesAutoresizingMaskIntoConstraints="NO" id="s04-K9-UVF">
-                                <rect key="frame" x="230" y="534" width="181" height="96"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <gestureRecognizers/>
+                                <state key="normal" backgroundImage="Copy Button Dropshadow"/>
                                 <connections>
-                                    <outletCollection property="gestureRecognizers" destination="7Ek-Ft-eVQ" appends="YES" id="9QT-oV-JYH"/>
+                                    <action selector="copyDeckCode:" destination="hpS-oB-iG4" eventType="touchUpInside" id="1wH-PF-CRg"/>
                                 </connections>
-                            </imageView>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="mBN-A8-ORD"/>
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="mRs-SG-DB0"/>
                     <connections>
-                        <outlet property="copyCodeButton" destination="s04-K9-UVF" id="bpt-Fa-TFE"/>
+                        <outlet property="copyCodeButtpn" destination="yXF-I0-GwN" id="9fB-1F-yhk"/>
+                        <outlet property="deckListImage" destination="D5k-PJ-EvT" id="E27-oN-V5t"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ysn-B9-gff" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="7Ek-Ft-eVQ"/>
             </objects>
-            <point key="canvasLocation" x="2179.7101449275365" y="-881.25"/>
+            <point key="canvasLocation" x="2008.6956521739132" y="-881.25"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Avb-le-XQH">
@@ -185,7 +223,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="TOz-2T-5tt" kind="relationship" relationship="viewControllers" id="LGc-HW-c0F"/>
-                        <segue destination="4Va-ZK-vya" kind="relationship" relationship="viewControllers" id="8Py-qd-u6j"/>
+                        <segue destination="vCZ-bO-WPd" kind="relationship" relationship="viewControllers" id="Byo-5h-Co4"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l6y-QP-p1v" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -196,7 +234,7 @@
         <scene sceneID="VD5-uC-dXz">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="TOz-2T-5tt" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Decks" image="Cards Icon" selectedImage="Cards Icon" id="wtD-NH-eQO"/>
+                    <tabBarItem key="tabBarItem" title="Decks" image="Cards Icon" selectedImage="arrow.down.doc" id="wtD-NH-eQO"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="WLH-Qz-Hl0">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -221,11 +259,10 @@
         <image name="Background 2" width="1920" height="1080"/>
         <image name="Cards Icon" width="30" height="30"/>
         <image name="Copy Button Dropshadow" width="128" height="65"/>
-        <image name="Ionia - Feijlord Spells Dropshadow" width="265" height="237"/>
-        <image name="Ionia - Freijlord Champions Dropshadow" width="307" height="71"/>
-        <image name="Ionia - Freijlord Statistics Dropshadow" width="284" height="520"/>
-        <image name="Ionia - Freijlord Troops Dropshadow" width="266" height="404"/>
+        <image name="Piltover - Shadow Isles Deck" width="502" height="838"/>
+        <image name="arrow.down.doc" width="128" height="128"/>
         <image name="demacia_splash" width="1920" height="887"/>
+        <image name="folder" catalog="system" width="128" height="95"/>
         <image name="icon-demacia" width="445" height="444"/>
         <image name="icon-freljord" width="445" height="444"/>
         <image name="icon-ionia" width="445" height="444"/>

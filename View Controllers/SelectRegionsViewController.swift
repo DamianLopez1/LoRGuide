@@ -18,7 +18,8 @@ class SelectRegionsViewController: UIViewController {
     @IBOutlet weak var piltoverIcon: UIButton!
     @IBOutlet weak var shadowIslesIcon: UIButton!
     
-
+    @IBOutlet weak var findADeckButton: UIButton!
+    
     var checkDemacia = true
     var checkFreljord = true
     var checkIonia = true
@@ -26,10 +27,18 @@ class SelectRegionsViewController: UIViewController {
     var checkPiltover = true
     var checkShadowIsles = true
     
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        findADeckButton.isEnabled == false
+        demaciaIcon.setImage(UIImage(named: "Demacia Selected"), for: .selected)
+        freljordIcon.setImage(UIImage(named: "freijlord Selected"), for: .selected)
+        ioniaIcon.setImage(UIImage(named: "IOANIA Selected"), for: .selected)
+        noxusIcon.setImage(UIImage(named: "Noxus Selected"), for: .selected)
+        piltoverIcon.setImage(UIImage(named: "Piltover Selected"), for: .selected)
+        shadowIslesIcon.setImage(UIImage(named: "Shadow Isles Selected"), for: .selected)
+        
    
     }
     
@@ -38,110 +47,113 @@ class SelectRegionsViewController: UIViewController {
         
     }
     
-    @IBAction func demaciaIconTapped(_ sender: Any) {
+    @IBOutlet var arrayOfRegions: [UIButton]!
+    
+    @IBAction func tappedOnMultipleRegions(_ sender: UIButton) {
+        sender.isSelected = !sender.isSelected
+        checkForPairsofRegions()
         
-        checkDemacia = !checkDemacia
-        
-        if checkDemacia == true {
-        demaciaIcon.setImage(UIImage(named: "Demacia Selected"), for: .normal)
-        } else if checkDemacia == false {
-            demaciaIcon.setImage(UIImage(named: "icon-demacia"), for: .normal)
-        }
-        checkForDemaciaFreljord()
-        bringButtonsBackDemaciaFreljord()
     }
     
     
-    @IBAction func freljordIconTapped(_ sender: Any) {
-        
-        checkFreljord = !checkFreljord
-        
-        if checkFreljord == true {
-               freljordIcon.setImage(UIImage(named: "freijlord selected"), for: .normal)
-               } else if checkFreljord == false {
-                   freljordIcon.setImage(UIImage(named: "icon-freljord"), for: .normal)
-               }
-//        checkForDemaciaFreljord()
-        checkForDemaciaFreljord()
-        bringButtonsBackDemaciaFreljord()
-    }
-    
-    
-    @IBAction func ioniaIconTapped(_ sender: Any) {
-        
-        checkIonia = !checkIonia
-         
-         if checkIonia == true {
-                ioniaIcon.setImage(UIImage(named: "icon-ionia"), for: .normal)
-                } else if checkIonia == false {
-                    ioniaIcon.setImage(UIImage(named: "IOANIA Selected"), for: .normal)
-                }
-    }
-    
-    @IBAction func noxusIconTapped(_ sender: Any) {
-        
-        checkNoxus = !checkNoxus
-        
-        if checkNoxus == true {
-               noxusIcon.setImage(UIImage(named: "icon-noxus"), for: .normal)
-               } else if checkNoxus == false {
-                   noxusIcon.setImage(UIImage(named: "Noxus Selected"), for: .normal)
-               }
 
-    }
-    
-    @IBAction func piltoverIconTapped(_ sender: Any) {
-        
-        checkPiltover = !checkPiltover
-        
-        if checkPiltover == true {
-        piltoverIcon.setImage(UIImage(named: "icon-piltover"), for: .normal)
-        } else if checkPiltover == false {
-            piltoverIcon.setImage(UIImage(named: "Piltover Selected"), for: .normal)
-        }
-        
-    }
-    
-    @IBAction func shadowIslesIcon(_ sender: Any) {
-        
-        checkShadowIsles = !checkShadowIsles
-        
-        if checkShadowIsles == true {
-        shadowIslesIcon.setImage(UIImage(named: "icon-shadowisles"), for: .normal)
-        } else if checkShadowIsles == false {
-            shadowIslesIcon.setImage(UIImage(named: "Shadow Isles Selected"), for: .normal)
-        }
-    }
-    //This is being called in Demacia to check for the combo
-    func checkForDemaciaFreljord() {
-        if (freljordIcon.currentImage?.isEqual(UIImage(named: "freijlord selected")))! && (demaciaIcon.currentImage?.isEqual(UIImage(named: "Demacia Selected")))! {
-            
-            ioniaIcon.isEnabled = false
-            noxusIcon.isEnabled = false
-            piltoverIcon.isEnabled = false
-            shadowIslesIcon.isEnabled = false
-            
-        } else  {
-            return
-        }
-    }
 
+    func checkForPairsofRegions() {
+        let selectedButtons = arrayOfRegions.filter { $0.isSelected }
+        
+        let unselectedButtons = arrayOfRegions.filter { !$0.isSelected}
+        
+        if selectedButtons.count == 2 {
+            unselectedButtons.forEach({$0.isEnabled = false})
+            findADeckButton.isEnabled = false
+        } else {
+            unselectedButtons.forEach({$0.isEnabled = true})
+            findADeckButton.isEnabled = true
+        }
     
-    
-    //this is being called in Demacia and Freiljord to return buttons
-    func bringButtonsBackDemaciaFreljord() {
-        if (demaciaIcon.currentImage?.isEqual(UIImage(named: "icon-demacia")))! || (freljordIcon.currentImage?.isEqual(UIImage(named: "icon-freljord")))!{
-            ioniaIcon.isEnabled = true
-            noxusIcon.isEnabled = true
-            piltoverIcon.isEnabled = true
-            shadowIslesIcon.isEnabled = true
+        
+    }
+    //Loading the correct deck when peeforming a segue
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "deckPreview" {
             
-            } else {
-                return
+            if demaciaIcon.isEnabled == true && freljordIcon.isEnabled == true {
+                let dpvc = segue.destination as! DeckPreviewViewController
+                dpvc.deckImage = UIImage(named: "Demacia - Freiljord Deck")
             }
+            
+            if demaciaIcon.isEnabled == true && ioniaIcon.isEnabled == true {
+                let dpvc = segue.destination as! DeckPreviewViewController
+                dpvc.deckImage = UIImage(named: "Demacia - Ionia Deck")
+            }
+            
+            if demaciaIcon.isEnabled == true && noxusIcon.isEnabled == true {
+                let dpvc = segue.destination as! DeckPreviewViewController
+                dpvc.deckImage = UIImage(named: "Demacia - Noxus Deck")
+            }
+            
+            if demaciaIcon.isEnabled == true && piltoverIcon.isEnabled == true {
+                let dpvc = segue.destination as! DeckPreviewViewController
+                dpvc.deckImage = UIImage(named: "Demacia - Piltover Deck")
+            }
+            
+            if demaciaIcon.isEnabled == true && shadowIslesIcon.isEnabled == true {
+                let dpvc = segue.destination as! DeckPreviewViewController
+                dpvc.deckImage = UIImage(named: "Demacia - Shadowisles Deck")
+            }
+            
+            if freljordIcon.isEnabled == true && ioniaIcon.isEnabled == true {
+                let dpvc = segue.destination as! DeckPreviewViewController
+                dpvc.deckImage = UIImage(named: "Freiljord - Ionia Deck")
+            }
+            
+            if freljordIcon.isEnabled == true && noxusIcon.isEnabled == true {
+                let dpvc = segue.destination as! DeckPreviewViewController
+                dpvc.deckImage = UIImage(named: "Freljord - Noxus Deck")
+            }
+            
+            if freljordIcon.isEnabled == true && piltoverIcon.isEnabled == true {
+                let dpvc = segue.destination as! DeckPreviewViewController
+                dpvc.deckImage = UIImage(named: "Freljord - Piltover Deck")
+            }
+            
+            if freljordIcon.isEnabled == true && shadowIslesIcon.isEnabled == true {
+                let dpvc = segue.destination as! DeckPreviewViewController
+                dpvc.deckImage = UIImage(named: "Freljord - Shadow Isles Deck")
+            }
+            
+            if ioniaIcon.isEnabled == true && noxusIcon.isEnabled == true {
+                let dpvc = segue.destination as! DeckPreviewViewController
+                dpvc.deckImage = UIImage(named: "Ionia - Noxus Deck")
+            }
+            
+            if ioniaIcon.isEnabled == true && piltoverIcon.isEnabled == true {
+                let dpvc = segue.destination as! DeckPreviewViewController
+                dpvc.deckImage = UIImage(named: "Ionia - Piltover Deck")
+            }
+            
+            if ioniaIcon.isEnabled == true && shadowIslesIcon.isEnabled == true {
+                let dpvc = segue.destination as! DeckPreviewViewController
+                dpvc.deckImage = UIImage(named: "Ionia - Shadow Isles Deck")
+            }
+            
+            if noxusIcon.isEnabled == true && shadowIslesIcon.isEnabled == true {
+                let dpvc = segue.destination as! DeckPreviewViewController
+                dpvc.deckImage = UIImage(named: "Noxus - Shadow Isles Deck")
+            }
+            
+            if noxusIcon.isEnabled == true && piltoverIcon.isEnabled == true {
+                let dpvc = segue.destination as! DeckPreviewViewController
+                dpvc.deckImage = UIImage(named: "Piltover - Noxus Deck")
+            }
+            
+            if shadowIslesIcon.isEnabled == true && piltoverIcon.isEnabled == true {
+                let dpvc = segue.destination as! DeckPreviewViewController
+                dpvc.deckImage = UIImage(named: "Piltover - Shadow Isles Deck")
+            }
+            
+        }
     }
-    
-    
-    
+
     
 }

@@ -15,6 +15,12 @@
 		74A4B313242DC731004F2393 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74A4B311242DC731004F2393 /* LaunchScreen.storyboard */; };
 		74A4B31D242E5435004F2393 /* SelectRegionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A4B31C242E5435004F2393 /* SelectRegionsViewController.swift */; };
 		74A4B31F242E5456004F2393 /* DeckPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A4B31E242E5456004F2393 /* DeckPreviewViewController.swift */; };
+		74B5ACEE24927C8100638FAE /* CardDataBaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B5ACED24927C8100638FAE /* CardDataBaseTableViewController.swift */; };
+		74B5ACF024927CA700638FAE /* CardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B5ACEF24927CA700638FAE /* CardController.swift */; };
+		74B5ACF224990D7C00638FAE /* CardImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B5ACF124990D7C00638FAE /* CardImageTableViewCell.swift */; };
+		74FBD391248FE41F0098D3AD /* set1-en_us.json in Resources */ = {isa = PBXBuildFile; fileRef = 74FBD390248FE41E0098D3AD /* set1-en_us.json */; };
+		74FBD394248FF01B0098D3AD /* JsonFileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FBD393248FF01B0098D3AD /* JsonFileController.swift */; };
+		74FBD396248FF0500098D3AD /* CardInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FBD395248FF0500098D3AD /* CardInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +34,12 @@
 		74A4B314242DC731004F2393 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		74A4B31C242E5435004F2393 /* SelectRegionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectRegionsViewController.swift; sourceTree = "<group>"; };
 		74A4B31E242E5456004F2393 /* DeckPreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckPreviewViewController.swift; sourceTree = "<group>"; };
+		74B5ACED24927C8100638FAE /* CardDataBaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDataBaseTableViewController.swift; sourceTree = "<group>"; };
+		74B5ACEF24927CA700638FAE /* CardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardController.swift; sourceTree = "<group>"; };
+		74B5ACF124990D7C00638FAE /* CardImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardImageTableViewCell.swift; sourceTree = "<group>"; };
+		74FBD390248FE41E0098D3AD /* set1-en_us.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "set1-en_us.json"; sourceTree = "<group>"; };
+		74FBD393248FF01B0098D3AD /* JsonFileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonFileController.swift; sourceTree = "<group>"; };
+		74FBD395248FF0500098D3AD /* CardInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +56,7 @@
 		74A4B2F7242DC72D004F2393 = {
 			isa = PBXGroup;
 			children = (
+				74FBD392248FEFF20098D3AD /* Controllers */,
 				74A4B31B242DC75C004F2393 /* View Controllers */,
 				74A4B31A242DC745004F2393 /* Storyboards */,
 				74A4B302242DC72E004F2393 /* Stats Of Runeterra */,
@@ -64,6 +77,7 @@
 			children = (
 				74A4B303242DC72E004F2393 /* AppDelegate.swift */,
 				74A4B305242DC72E004F2393 /* SceneDelegate.swift */,
+				74FBD390248FE41E0098D3AD /* set1-en_us.json */,
 				74A4B30F242DC731004F2393 /* Assets.xcassets */,
 				74A4B314242DC731004F2393 /* Info.plist */,
 				74A4B30C242DC72E004F2393 /* Stats_Of_Runeterra.xcdatamodeld */,
@@ -85,8 +99,20 @@
 			children = (
 				74A4B31C242E5435004F2393 /* SelectRegionsViewController.swift */,
 				74A4B31E242E5456004F2393 /* DeckPreviewViewController.swift */,
+				74B5ACED24927C8100638FAE /* CardDataBaseTableViewController.swift */,
+				74B5ACF124990D7C00638FAE /* CardImageTableViewCell.swift */,
 			);
 			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		74FBD392248FEFF20098D3AD /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				74FBD393248FF01B0098D3AD /* JsonFileController.swift */,
+				74FBD395248FF0500098D3AD /* CardInfo.swift */,
+				74B5ACEF24927CA700638FAE /* CardController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -150,6 +176,7 @@
 				74A4B313242DC731004F2393 /* LaunchScreen.storyboard in Resources */,
 				74A4B310242DC731004F2393 /* Assets.xcassets in Resources */,
 				74A4B30B242DC72E004F2393 /* Main.storyboard in Resources */,
+				74FBD391248FE41F0098D3AD /* set1-en_us.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -161,10 +188,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				74A4B31F242E5456004F2393 /* DeckPreviewViewController.swift in Sources */,
+				74B5ACF224990D7C00638FAE /* CardImageTableViewCell.swift in Sources */,
 				74A4B30E242DC72E004F2393 /* Stats_Of_Runeterra.xcdatamodeld in Sources */,
+				74FBD394248FF01B0098D3AD /* JsonFileController.swift in Sources */,
 				74A4B304242DC72E004F2393 /* AppDelegate.swift in Sources */,
 				74A4B31D242E5435004F2393 /* SelectRegionsViewController.swift in Sources */,
 				74A4B306242DC72E004F2393 /* SceneDelegate.swift in Sources */,
+				74B5ACEE24927C8100638FAE /* CardDataBaseTableViewController.swift in Sources */,
+				74B5ACF024927CA700638FAE /* CardController.swift in Sources */,
+				74FBD396248FF0500098D3AD /* CardInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
