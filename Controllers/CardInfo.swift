@@ -14,6 +14,7 @@ struct CardInfo: Codable {
     private var assets: [Assets]
     var region: String
     var type: String
+    var name: String
     var cost: Int
     var imageURL: String? {
         return assets.first?.gameAbsolutePath

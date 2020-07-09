@@ -7,11 +7,15 @@
 //
 
 import UIKit
+import Combine
 
 class CardImageTableViewCell: UITableViewCell {
+    var loadImageCancellable: AnyCancellable?
     
     @IBOutlet weak var cardImage: UIImageView!
-    
+    override func prepareForReuse() {
+        loadImageCancellable?.cancel()
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
